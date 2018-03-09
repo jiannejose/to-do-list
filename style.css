@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+}
+
+body {
+  background-color: #FAF2CC;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.to-do-list {
+  padding: 0 20px;
+}
+
+.title {
+  padding: 20px 0;
+}
+
+.title h1 {
+  font-family: 'Bree Serif', serif;
+  color: #8F6B41;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+}
+
+.enter-data {
+  width: 100%;
+  display: flex;
+  position: relative;
+  text-align: center;
+}
+
+.input {
+  width: 80%;
+}
+
+.input input {
+  width: 100%;
+  height: 2.5em;
+  border: 1px solid #8F6B41;
+  color: #8F6B41;
+  padding-left: 10px;
+}
+
+.add {
+  width: 20%;
+  padding-top: 8px;
+}
+
+.tasks,
+.completed {
+  border: 2px solid #8F6B41;
+  padding: 20px;
+  margin: 30px 0;
+}

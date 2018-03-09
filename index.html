@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>To-Do List</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <main>
+            <div class="to-do-list">
+                <div class="title">
+                    <h1>To-Do List</h1>
+                </div> <!-- /title -->
+
+                <div class="enter-data">
+                    <div class="input">
+                        <input id="inputTask" type="text" placeholder="Type task here" value="" />
+                    </div>
+
+                    <button id="addTask">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div> <!-- /add -->
+
+                <div class="tasks">
+                    <h3>Tasks</h3>
+
+                    <ol id="tasksList">
+                        
+                    </ol>
+                </div> <!-- /list -->
+
+                <div class="completed">
+                    <h3>Completed</h3>
+                    
+                    <ol id="completedList">
+                        <!-- added data will be inserted here -->
+                    </ol>
+                </div>
+                
+            </div> <!-- /to-do-list -->
+
+        </main>
+
+        <script src="main.js"></script>
+    </body>
+</html>
