@@ -46,40 +46,67 @@ function clearInputField() {
 }
 
 addTaskButton.addEventListener('click', addTask);
-// add task end
+// add task end 
+
 
 // task done start 
 function whenTaskDone() {
     let taskDoneButtons = document.getElementsByClassName('done');
 
     for (let i=0; i<taskDoneButtons.length; i++) {
-        taskDoneButtons[i].addEventListener('click', taskCompleted);
+      taskDoneButtons[i].addEventListener('click', taskCompleted);
     }
 }
 
 function taskCompleted() {
-  let parentElement = this.parentElement;
-  let grandParentElement = parentElement.parentElement;
+  let grandparentElement = this.parentElement.parentElement;
   
-  completedTasksList.innerHTML += grandParentElement.outerHTML;
-  grandParentElement.remove();
+  completedTasksList.innerHTML += grandparentElement.outerHTML;
+  grandparentElement.remove();
+
+  deletingTask();
+
+  undoingTask();
 }
 // task done end
 
+
 // delete task start 
 function deletingTask() {
-    let deleteTaskButtons = document.getElementsByClassName('delete');
+  let deleteTaskButtons = document.getElementsByClassName('delete');
 
-    for(var i=0; i<deleteTaskButtons.length; i++) {
-        deleteTaskButtons[i].addEventListener('click', deleteTask);
-    }
+  for(var i=0; i<deleteTaskButtons.length; i++) {
+    deleteTaskButtons[i].addEventListener('click', deleteTask);
+  }
 }
 
 function deleteTask() {
-    let parentElement = this.parentElement;
-    let grandParentElement = parentElement.parentElement;
+  let grandparentElement = this.parentElement.parentElement;
 
-    grandParentElement.remove();
+  grandparentElement.remove();
+}
+// delete task end
+
+
+// undo completing task start 
+function undoingTask() {
+  let undoTaskButtons = document.getElementsByClassName('undo');
+
+  for(var i=0; i<undoTaskButtons.length; i++) {
+    undoTaskButtons[i].addEventListener('click', undoTask);
+  }
 }
 
-// delete task end
+function undoTask() {
+  let grandparentElement = this.parentElement.parentElement;
+
+  tasksList.innerHTML += grandparentElement.outerHTML;
+  grandparentElement.remove();
+
+  whenTaskDone();
+
+  deletingTask();
+
+}
+
+// undo completing task end
