@@ -13,16 +13,20 @@ function addTask() {
       ${inputTaskField.value}
 
       <div class="actions">
-          <button>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+          <button class="edit">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
           </button>
 
-          <button>
-              <i class="fa fa-trash" aria-hidden="true"></i>
+          <button class="delete">
+                <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
 
           <button class="done">
-              <i class="fa fa-check" aria-hidden="true"></i>
+                <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+
+          <button class="undo">
+                <i class="fa fa-undo" aria-hidden="true"></i>
           </button>
       </div>
       
@@ -31,6 +35,8 @@ function addTask() {
   clearInputField();
 
   whenTaskDone();
+
+  deletingTask();
 
   taskId++;
 }
@@ -59,3 +65,21 @@ function taskCompleted() {
   grandParentElement.remove();
 }
 // task done end
+
+// delete task start 
+function deletingTask() {
+    let deleteTaskButtons = document.getElementsByClassName('delete');
+
+    for(var i=0; i<deleteTaskButtons.length; i++) {
+        deleteTaskButtons[i].addEventListener('click', deleteTask);
+    }
+}
+
+function deleteTask() {
+    let parentElement = this.parentElement;
+    let grandParentElement = parentElement.parentElement;
+
+    grandParentElement.remove();
+}
+
+// delete task end
