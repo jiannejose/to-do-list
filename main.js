@@ -10,7 +10,7 @@ function addTask() {
 
   tasksList.innerHTML += 
   `<li id="taskNo${taskId}">
-      ${inputTaskField.value}
+      <textarea id="text" readonly>${inputTaskField.value}</textarea>
 
       <div class="actions">
           <button class="edit">
@@ -37,6 +37,8 @@ function addTask() {
   whenTaskDone();
 
   deletingTask();
+
+  editingTask()
 
   taskId++;
 }
@@ -67,6 +69,8 @@ function taskCompleted() {
   deletingTask();
 
   undoingTask();
+
+  editingTask()
 }
 // task done end
 
@@ -75,7 +79,7 @@ function taskCompleted() {
 function deletingTask() {
   let deleteTaskButtons = document.getElementsByClassName('delete');
 
-  for(var i=0; i<deleteTaskButtons.length; i++) {
+  for(let i=0; i<deleteTaskButtons.length; i++) {
     deleteTaskButtons[i].addEventListener('click', deleteTask);
   }
 }
@@ -92,7 +96,7 @@ function deleteTask() {
 function undoingTask() {
   let undoTaskButtons = document.getElementsByClassName('undo');
 
-  for(var i=0; i<undoTaskButtons.length; i++) {
+  for(let i=0; i<undoTaskButtons.length; i++) {
     undoTaskButtons[i].addEventListener('click', undoTask);
   }
 }
@@ -107,6 +111,25 @@ function undoTask() {
 
   deletingTask();
 
+  editingTask()
+
+}
+// undo completing task end
+
+
+// edit task name start 
+function editingTask() {
+  let editTaskButtons = document.getElementsByClassName('edit');
+
+  for(let i=0; i<editTaskButtons.length; i++) {
+    editTaskButtons[i].addEventListener('click', editTask);
+  }
 }
 
-// undo completing task end
+function editTask() {
+  let test = document.getElementById('text');
+  
+  test.removeAttribute('readonly');
+}
+
+// edit task name end 
