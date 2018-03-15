@@ -5,12 +5,16 @@ let tasksList = document.getElementById('tasksList');
 let completedTasksList = document.getElementById('completedList');
 let taskId = 1;
 
+
+inputTaskField.focus();
+
 // add task start
 function addTask() {
 
   tasksList.innerHTML += 
   `<li id="taskNo${taskId}">
-      ${inputTaskField.value}
+      <span class="input-value">${inputTaskField.value}</span>
+      <textarea class="edit_input-value">${inputTaskField.value}</textarea>
 
       <div class="actions">
           <button class="edit">
@@ -39,8 +43,6 @@ function addTask() {
   deletingTask();
 
   editingTask()
-
-  inputTaskField.focus();
 
   taskId++;
 }
@@ -137,9 +139,11 @@ function editingTask() {
 }
 
 function editTask() {
-  let test = document.getElementById(taskNo`${taskId}`);
+  let grandparentElement = this.parentElement.parentElement;
+  let editTaskField = document.getElementsByClassName('edit_input-value');
+  grandparentElement.classList.add('edit_task');
 
-  console.log(test);
 }
+
 
 // edit task name end
