@@ -10,7 +10,7 @@ function addTask() {
 
   tasksList.innerHTML += 
   `<li id="taskNo${taskId}">
-      <textarea id="text" readonly>${inputTaskField.value}</textarea>
+      ${inputTaskField.value}
 
       <div class="actions">
           <button class="edit">
@@ -40,6 +40,8 @@ function addTask() {
 
   editingTask()
 
+  inputTaskField.focus();
+
   taskId++;
 }
 
@@ -50,6 +52,14 @@ function clearInputField() {
 addTaskButton.addEventListener('click', addTask);
 // add task end 
 
+
+// 'enter' key trigger start
+  inputTaskField.addEventListener('keyup', function(event) {
+    if(event.keyCode === 13) {
+      addTaskButton.click();
+    }
+  })
+// 'enter key trigger end
 
 // task done start 
 function whenTaskDone() {
@@ -127,9 +137,9 @@ function editingTask() {
 }
 
 function editTask() {
-  let test = document.getElementById('text');
-  
-  test.removeAttribute('readonly');
+  let test = document.getElementById(taskNo`${taskId}`);
+
+  console.log(test);
 }
 
-// edit task name end 
+// edit task name end
