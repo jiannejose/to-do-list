@@ -1,3 +1,4 @@
+/* GENERIC */
 * {
   box-sizing: border-box;
   outline: none;
@@ -9,6 +10,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+
+/* STATIC */
 .to-do-list {
   padding: 0 20px;
 }
@@ -46,7 +49,6 @@ body {
 
 #addTask {
   color: #8F6B41;
-
   width: 15%;
   padding-top: 3px;
   margin-left: 10px;
@@ -59,14 +61,37 @@ body {
   margin: 30px 0;
 }
 
+.actions {
+  margin-top: 10px;
+}
+
+/* DYNAMIC */
 .edit_input-value {
   display: none;
 }
 
-.edit_task > .input-value {
+.save {
+  display: none;
+}
+
+.edit_task > .input-value,
+.edit_task > .actions > .edit,
+.edit_task > .actions > .delete,
+.edit_task > .actions > .done,
+.edit_task > .actions > .undo {
   display: none;
 }
 
 .edit_task > .edit_input-value {
+  display: block;
+  max-width: 200px;
+  height: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-top: -20px;
+}
+
+.edit_task > .actions > .save {
   display: block;
 }

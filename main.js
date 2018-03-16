@@ -18,19 +18,23 @@ function addTask() {
 
       <div class="actions">
           <button class="edit">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
           </button>
 
           <button class="delete">
-                <i class="fa fa-trash" aria-hidden="true"></i>
+              <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
 
           <button class="done">
-                <i class="fa fa-check" aria-hidden="true"></i>
+              <i class="fa fa-check" aria-hidden="true"></i>
           </button>
 
           <button class="undo">
-                <i class="fa fa-undo" aria-hidden="true"></i>
+              <i class="fa fa-undo" aria-hidden="true"></i>
+          </button>
+
+          <button class="save">
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
           </button>
       </div>
       
@@ -42,7 +46,9 @@ function addTask() {
 
   deletingTask();
 
-  editingTask()
+  editingTask();
+
+  savingRenamedTask();
 
   taskId++;
 }
@@ -82,7 +88,9 @@ function taskCompleted() {
 
   undoingTask();
 
-  editingTask()
+  editingTask();
+
+  savingRenamedTask();
 }
 // task done end
 
@@ -123,13 +131,15 @@ function undoTask() {
 
   deletingTask();
 
-  editingTask()
+  editingTask();
+
+  savingRenamedTask();
 
 }
 // undo completing task end
 
 
-// edit task name start 
+// rename task start 
 function editingTask() {
   let editTaskButtons = document.getElementsByClassName('edit');
 
@@ -140,10 +150,30 @@ function editingTask() {
 
 function editTask() {
   let grandparentElement = this.parentElement.parentElement;
-  let editTaskField = document.getElementsByClassName('edit_input-value');
-  grandparentElement.classList.add('edit_task');
+  grandparentElement.classList.add('edit_task');  
 
+}
+// rename task end
+
+
+// save task's new name start
+function savingRenamedTask() {
+  let saveRenamedTaskButton = document.getElementsByClassName('save');
+
+  for(var i=0; i<saveRenamedTaskButton.length; i++) {
+    saveRenamedTaskButton[i].addEventListener('click', saveRenamedTask);
+  }
+}
+
+function saveRenamedTask() {
+  let editTaskField = document.getElementsByClassName('edit_input-value');
+  let taskNewName = editTaskField.value;
+
+  console.log(taskNewName);
+
+  // let grandparentElement = this.parentElement.parentElement;
+  // grandparentElement.classList.remove('edit_task');
 }
 
 
-// edit task name end
+// save task's new name end
