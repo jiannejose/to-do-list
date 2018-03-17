@@ -14,7 +14,6 @@ function addTask() {
   tasksList.innerHTML += 
   `<li id="taskNo${taskId}">
       <span class="input-value">${inputTaskField.value}</span>
-      <textarea class="edit_input-value">${inputTaskField.value}</textarea>
 
       <div class="actions">
           <button class="edit">
@@ -27,10 +26,6 @@ function addTask() {
 
           <button class="done">
               <i class="fa fa-check" aria-hidden="true"></i>
-          </button>
-
-          <button class="undo">
-              <i class="fa fa-undo" aria-hidden="true"></i>
           </button>
 
           <button class="save">
@@ -80,8 +75,18 @@ function whenTaskDone() {
 
 function taskCompleted() {
   let grandparentElement = this.parentElement.parentElement;
-  
+  let doneButton = grandparentElement.querySelector('.done');
+  doneButton.remove();
+
+  let replaceDoneButton = grandparentElement.querySelector('.actions');
+  replaceDoneButton.innerHTML += `
+    <button class="undo">
+        <i class="fa fa-undo" aria-hidden="true"></i>
+    </button>
+  `;
+
   completedTasksList.innerHTML += grandparentElement.outerHTML;
+  
   grandparentElement.remove();
 
   deletingTask();
@@ -123,8 +128,18 @@ function undoingTask() {
 
 function undoTask() {
   let grandparentElement = this.parentElement.parentElement;
+  let undoButton = grandparentElement.querySelector('.undo');
+  undoButton.remove();
+
+  let replaceUndoButton = grandparentElement.querySelector('.actions');
+  replaceUndoButton.innerHTML += `
+    <button class="done">
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </button>
+  `;
 
   tasksList.innerHTML += grandparentElement.outerHTML;
+  
   grandparentElement.remove();
 
   whenTaskDone();
@@ -166,11 +181,9 @@ function savingRenamedTask() {
 }
 
 function saveRenamedTask() {
-  let editTaskField = document.getElementsByClassName('edit_input-value');
-  let taskNewName = editTaskField.value;
-
-  console.log(taskNewName);
-
+  let grandparentElement = this.parentElement.parentElement;
+  
+  
   // let grandparentElement = this.parentElement.parentElement;
   // grandparentElement.classList.remove('edit_task');
 }
