@@ -27,10 +27,6 @@ function addTask() {
           <button class="done">
               <i class="fa fa-check" aria-hidden="true"></i>
           </button>
-
-          <button class="save">
-              <i class="fa fa-floppy-o" aria-hidden="true"></i>
-          </button>
       </div>
       
   </li>`;
@@ -165,7 +161,19 @@ function editingTask() {
 
 function editTask() {
   let grandparentElement = this.parentElement.parentElement;
+  let inputValue = grandparentElement.querySelector('span').innerHTML;
+
+  grandparentElement.innerHTML += `
+    <form>
+      <input type="text" value="${inputValue}" class="renameInput" />
+      <button class="save">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </form> 
+  `;
   grandparentElement.classList.add('edit_task');  
+
+  savingRenamedTask();
 
 }
 // rename task end
@@ -180,13 +188,25 @@ function savingRenamedTask() {
   }
 }
 
-function saveRenamedTask() {
+function saveRenamedTask(e) {
+  e.preventDefault();
   let grandparentElement = this.parentElement.parentElement;
-  
-  
-  // let grandparentElement = this.parentElement.parentElement;
-  // grandparentElement.classList.remove('edit_task');
+  let newName = grandparentElement.querySelector('.renameInput').value;
+  let inputValue = grandparentElement.querySelector('.input-value');
+  let formMarkup = grandparentElement.querySelector('form');
+
+  grandparentElement.classList.remove('edit_task');
+  inputValue.innerHTML = newName;
+
+  formMarkup.remove();
+
+  whenTaskDone();
+
+  deletingTask();
+
+  editingTask();
 }
+
 
 
 // save task's new name end

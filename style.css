@@ -12,6 +12,7 @@ body {
 
 
 /* STATIC */
+
 .to-do-list {
   padding: 0 20px;
 }
@@ -70,10 +71,6 @@ body {
   display: none;
 }
 
-.save {
-  display: none;
-}
-
 .edit_task > .input-value,
 .edit_task > .actions > .edit,
 .edit_task > .actions > .delete,
@@ -82,16 +79,12 @@ body {
   display: none;
 }
 
-.edit_task > .edit_input-value {
+.edit_task > form {
   display: block;
   max-width: 200px;
   height: 30px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  padding-left: 10px;
-  margin-top: -20px;
-}
-
-.edit_task > .actions > .save {
-  display: block;
+  font-size: 16px; 
+  position: relative;
+  margin: 15px 0;
 }
